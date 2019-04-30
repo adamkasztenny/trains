@@ -1,5 +1,5 @@
 # Trains
-Java 8 and [sbt]() are needed to run this project
+Java 8 and [sbt](https://www.scala-sbt.org/download.html) are needed to run this project
 
 To run it:
 ```
