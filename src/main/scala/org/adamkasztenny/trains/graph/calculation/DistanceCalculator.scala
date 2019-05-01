@@ -6,12 +6,17 @@ import scalax.collection.immutable.Graph
 object DistanceCalculator {
 
   def apply(cities: String*)(graph: Graph[String, WkDiEdge]): Option[Int] = {
-    def calculateDistance(nodes: Seq[graph.NodeT]): Option[Int] = {
+    def traverseGraph(nodes: Seq[graph.NodeT]): graph.Path = {
       val startNode = nodes.head
       val builder = graph.newPathBuilder(startNode)
       nodes.tail.foreach(node => builder += node)
-      if (builder.result.nodes != nodes) return None
-      Option(builder.result.weight.toInt).filterNot(_ == 0)
+      builder.result()
+    }
+
+    def calculateDistance(nodes: Seq[graph.NodeT]): Option[Int] = {
+      val path = traverseGraph(nodes)
+      if (path.nodes != nodes) return None
+      Option(path.weight.toInt).filterNot(_ == 0)
     }
 
     val possibleCityNodes = cities.flatMap(city => graph.find(city))
