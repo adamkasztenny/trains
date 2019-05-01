@@ -7,8 +7,8 @@ import scalax.collection.immutable.Graph
 
 class TrainCalculationApi(graph: Graph[String, WkDiEdge]) {
 
-  def distanceBetweenCities(startCity: String, endCity: String): String =
-    DistanceCalculator(startCity, endCity)(graph) match {
+  def distanceBetweenCities(cities: String*): String =
+    DistanceCalculator(cities: _*)(graph) match {
       case Some(distance) => distance.toString
       case _ => "NO SUCH ROUTE"
     }
