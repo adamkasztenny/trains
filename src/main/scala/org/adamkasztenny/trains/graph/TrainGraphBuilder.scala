@@ -3,7 +3,7 @@ package org.adamkasztenny.trains.graph
 import scalax.collection.edge.WkDiEdge
 import scalax.collection.immutable.Graph
 
-object TrainGraph {
+object TrainGraphBuilder {
 
   def apply(textEdges: Array[String]): Graph[String, WkDiEdge] = {
     val edges = textEdges.map(textEdge => {
