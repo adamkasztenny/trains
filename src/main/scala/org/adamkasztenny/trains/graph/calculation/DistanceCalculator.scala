@@ -15,7 +15,8 @@ object DistanceCalculator {
 
     def calculateDistance(nodes: Seq[graph.NodeT]): Option[Int] = {
       val path = traverseGraph(nodes)
-      if (path.nodes != nodes) return None
+      val pathIsIncomplete = path.nodes != nodes
+      if (pathIsIncomplete) return None
       Option(path.weight.toInt).filterNot(_ == 0)
     }
 
