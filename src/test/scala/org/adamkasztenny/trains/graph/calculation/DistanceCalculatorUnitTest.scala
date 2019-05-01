@@ -45,6 +45,10 @@ class DistanceCalculatorUnitTest extends FunSuite with Matchers with OptionValue
       WkDiEdge("E", "B")(3),
       WkDiEdge("A", "E")(7)
     )
+    DistanceCalculator("A", "B", "C")(graph).value shouldBe 9
+    DistanceCalculator("A", "D")(graph).value shouldBe 5
+    DistanceCalculator("A", "D", "C")(graph).value shouldBe 13
     DistanceCalculator("A", "E", "B", "C", "D")(graph).value shouldBe 22
+    DistanceCalculator("A", "E", "D")(graph) shouldBe None
   }
 }

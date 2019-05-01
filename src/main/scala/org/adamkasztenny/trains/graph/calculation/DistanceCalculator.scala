@@ -10,6 +10,7 @@ object DistanceCalculator {
       val startNode = nodes.head
       val builder = graph.newPathBuilder(startNode)
       nodes.tail.foreach(node => builder += node)
+      if (builder.result.nodes != nodes) return None
       Option(builder.result.weight.toInt).filterNot(_ == 0)
     }
 
