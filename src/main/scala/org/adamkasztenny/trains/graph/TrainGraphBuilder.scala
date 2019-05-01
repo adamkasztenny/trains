@@ -1,11 +1,13 @@
 package org.adamkasztenny.trains.graph
 
+import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
+
 import scalax.collection.edge.WkDiEdge
 import scalax.collection.immutable.Graph
 
 object TrainGraphBuilder {
 
-  def apply(textEdges: Array[String]): Graph[String, WkDiEdge] = {
+  def apply(textEdges: Array[String]): TrainGraph = {
     val edges = textEdges.map(textEdge => {
       val startNode = textEdge.head.toString
       val endNode = textEdge.charAt(1).toString

@@ -1,10 +1,12 @@
 package org.adamkasztenny.trains.graph
 
+import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
+
 import scalax.collection.edge.WkDiEdge
 import scalax.collection.immutable.Graph
 
 object SampleGraph {
-  def apply(): Graph[String, WkDiEdge] =
+  def apply(): TrainGraph =
     Graph(
       WkDiEdge("A", "B")(5),
       WkDiEdge("B", "C")(4),

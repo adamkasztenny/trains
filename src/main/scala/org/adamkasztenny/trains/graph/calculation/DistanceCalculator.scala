@@ -1,11 +1,10 @@
 package org.adamkasztenny.trains.graph.calculation
 
-import scalax.collection.edge.WkDiEdge
-import scalax.collection.immutable.Graph
+import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 
 object DistanceCalculator {
 
-  def apply(cities: String*)(graph: Graph[String, WkDiEdge]): Option[Int] = {
+  def apply(cities: String*)(graph: TrainGraph): Option[Int] = {
     def traverseGraph(nodes: Seq[graph.NodeT]): graph.Path = {
       val startNode = nodes.head
       val builder = graph.newPathBuilder(startNode)
