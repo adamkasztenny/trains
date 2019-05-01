@@ -1,6 +1,8 @@
 package org.adamkasztenny.trains.graph.calculation
 
+import org.adamkasztenny.trains.Conversions
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
+import Conversions._
 
 object DistanceCalculator {
 
@@ -16,7 +18,7 @@ object DistanceCalculator {
       val path = traverseGraph(nodes)
       val pathIsIncomplete = path.nodes != nodes
       if (pathIsIncomplete) return None
-      Option(path.weight.toInt).filterNot(_ == 0)
+      Option(path.weight).filterNot(_ == 0)
     }
 
     val possibleCityNodes = cities.flatMap(city => graph.find(city))

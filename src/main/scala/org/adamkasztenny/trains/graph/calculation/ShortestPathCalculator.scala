@@ -1,6 +1,8 @@
 package org.adamkasztenny.trains.graph.calculation
 
+import org.adamkasztenny.trains.Conversions
 import org.adamkasztenny.trains.graph.TrainGraphTypes._
+import Conversions._
 
 object ShortestPathCalculator {
 
@@ -13,12 +15,11 @@ object ShortestPathCalculator {
       val pathsBackToStart = successors.map(successor => successor shortestPathTo node).filter(_.isDefined).map(_.get)
       val shortestPathBackToStart = pathsBackToStart.minBy(_.weight)
       (node shortestPathTo shortestPathBackToStart.nodes.head).map(_.weight + shortestPathBackToStart.weight)
-        .map(_.toInt)
     }
 
     def calculateShortestPath(start: graph.NodeT, end: graph.NodeT): Option[Int] = {
       if (start == end) calculateShortestPathToSelf(start)
-      else (start shortestPathTo end).map(_.weight.toInt)
+      else (start shortestPathTo end).map(_.weight)
     }
 
     (startNode, endNode) match {
