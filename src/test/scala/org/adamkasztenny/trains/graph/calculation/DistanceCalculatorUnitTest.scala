@@ -1,5 +1,6 @@
 package org.adamkasztenny.trains.graph.calculation
 
+import org.adamkasztenny.trains.graph.SampleGraph
 import org.scalatest.{FunSuite, Matchers, OptionValues}
 
 import scalax.collection.edge.WkDiEdge
@@ -34,17 +35,7 @@ class DistanceCalculatorUnitTest extends FunSuite with Matchers with OptionValue
   }
 
   test("should return the distance between multiple cities in a graph with many nodes") {
-    val graph = Graph(
-      WkDiEdge("A", "B")(5),
-      WkDiEdge("B", "C")(4),
-      WkDiEdge("C", "D")(8),
-      WkDiEdge("D", "C")(8),
-      WkDiEdge("D", "E")(6),
-      WkDiEdge("A", "D")(5),
-      WkDiEdge("C", "E")(2),
-      WkDiEdge("E", "B")(3),
-      WkDiEdge("A", "E")(7)
-    )
+    val graph = SampleGraph()
     DistanceCalculator("A", "B", "C")(graph).value shouldBe 9
     DistanceCalculator("A", "D")(graph).value shouldBe 5
     DistanceCalculator("A", "D", "C")(graph).value shouldBe 13

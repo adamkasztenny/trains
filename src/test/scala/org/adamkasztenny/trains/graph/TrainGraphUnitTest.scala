@@ -27,17 +27,7 @@ class TrainGraphUnitTest extends FunSuite with Matchers with OptionValues {
 
   test("should create a graph with many nodes from the simple text representation of edges") {
     val textEdges = Array("AB5", "BC4", "CD8", "DC8", "DE6", "AD5", "CE2", "EB3", "AE7")
-    val expectedGraph = Graph(
-      WkDiEdge("A", "B")(5),
-      WkDiEdge("B", "C")(4),
-      WkDiEdge("C", "D")(8),
-      WkDiEdge("D", "C")(8),
-      WkDiEdge("D", "E")(6),
-      WkDiEdge("A", "D")(5),
-      WkDiEdge("C", "E")(2),
-      WkDiEdge("E", "B")(3),
-      WkDiEdge("A", "E")(7)
-    )
+    val expectedGraph = SampleGraph()
     val trainGraph = TrainGraph(textEdges)
     trainGraph shouldBe expectedGraph
     trainGraph.totalWeight shouldBe 48
