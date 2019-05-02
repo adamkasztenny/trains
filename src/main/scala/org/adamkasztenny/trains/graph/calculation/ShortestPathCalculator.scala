@@ -7,8 +7,6 @@ import Conversions._
 object ShortestPathCalculator {
 
   def apply(startCity: String, endCity: String)(graph: TrainGraph): Option[Int] = {
-    val startNode = graph.find(startCity)
-    val endNode = graph.find(endCity)
 
     def calculateShortestPathToSelf(node: graph.NodeT): Option[Int] = {
       val successors = node.diSuccessors
@@ -22,7 +20,7 @@ object ShortestPathCalculator {
       else (start shortestPathTo end).map(_.weight)
     }
 
-    (startNode, endNode) match {
+    (graph.find(startCity), graph.find(endCity)) match {
       case (Some(start), Some(end)) => calculateShortestPath(start, end)
       case _ => None
     }

@@ -9,9 +9,6 @@ object NumberOfTripsCalculator {
     type Path = Seq[graph.NodeT]
     type Paths = Seq[Seq[graph.NodeT]]
 
-    val startNode = graph.find(startCity)
-    val endNode = graph.find(endCity)
-
     def traverse(start: graph.NodeT, end: graph.NodeT)
                 (currentPath: Path = Seq.empty, allPaths: Paths = Seq.empty): Paths = {
       val newPath = currentPath :+ start
@@ -33,7 +30,7 @@ object NumberOfTripsCalculator {
       Option(pathsFulfillingPredicate.length).filterNot(_ == 0)
     }
 
-    (startNode, endNode) match {
+    (graph.find(startCity), graph.find(endCity)) match {
       case (Some(start), Some(end)) => calculateNumberOfPaths(start, end)
       case _ => None
     }
