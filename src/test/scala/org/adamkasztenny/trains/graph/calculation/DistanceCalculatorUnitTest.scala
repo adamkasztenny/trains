@@ -23,7 +23,7 @@ class DistanceCalculatorUnitTest extends FunSuite with Matchers with OptionValue
     DistanceCalculator("A", "C")(graph) shouldBe None
   }
 
-  test("should return the distance between two cities in a one node graph") {
+  test("should return the distance between two cities in a two node graph") {
     val graph = Graph(WkDiEdge("A", "B")(2))
     DistanceCalculator("A", "B")(graph).value shouldBe 2
   }

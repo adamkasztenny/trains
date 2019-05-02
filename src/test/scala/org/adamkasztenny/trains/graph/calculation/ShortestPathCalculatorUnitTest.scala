@@ -23,7 +23,7 @@ class ShortestPathCalculatorUnitTest extends FunSuite with Matchers with OptionV
     ShortestPathCalculator("A", "C")(graph) shouldBe None
   }
 
-  test("should return the shortest path between two cities in a one node graph") {
+  test("should return the shortest path between two cities in a two node graph") {
     val graph = Graph(WkDiEdge("A", "B")(2))
     ShortestPathCalculator("A", "B")(graph).value shouldBe 2
   }
