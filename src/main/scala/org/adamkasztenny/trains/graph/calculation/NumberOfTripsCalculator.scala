@@ -7,7 +7,7 @@ object NumberOfTripsCalculator {
   def apply(startCity: String, endCity: String, compareTo: (Int) => Boolean, maximumNumberOfStops: Int)
            (graph: TrainGraph): Option[Int] = {
     type Path = Seq[graph.NodeT]
-    type Paths = Seq[Seq[graph.NodeT]]
+    type Paths = Seq[Path]
 
     def traverse(start: graph.NodeT, end: graph.NodeT)
                 (currentPath: Path = Seq.empty, allPaths: Paths = Seq.empty): Paths = {
