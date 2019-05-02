@@ -1,7 +1,7 @@
 package org.adamkasztenny.trains
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
-import org.adamkasztenny.trains.graph.calculation.{Distance, NumberOfTripsByDistanceCalculator, NumberOfTripsByStopsCalculator, ShortestPathCalculator}
+import org.adamkasztenny.trains.graph.calculation.{Distance, NumberOfTripsByDistance, NumberOfTripsByStopsCalculator, ShortestPathCalculator}
 
 class TrainCalculationApi(graph: TrainGraph) {
 
@@ -21,7 +21,7 @@ class TrainCalculationApi(graph: TrainGraph) {
     }
 
   def numberOfTripsBetweenCitiesByDistance(startCity: String, endCity: String, maximumNumberOfStops: Int): String =
-    NumberOfTripsByDistanceCalculator(startCity, endCity, maximumNumberOfStops)(graph) match {
+    NumberOfTripsByDistance(startCity, endCity, maximumNumberOfStops)(graph) match {
       case Some(numberOfTrips) => numberOfTrips.toString
       case _ => NoRouteMessage
     }

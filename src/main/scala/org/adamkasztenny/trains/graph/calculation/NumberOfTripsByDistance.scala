@@ -3,7 +3,7 @@ package org.adamkasztenny.trains.graph.calculation
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 import org.adamkasztenny.trains.Conversions._
 
-object NumberOfTripsByDistanceCalculator {
+object NumberOfTripsByDistance {
 
   def apply(startCity: String, endCity: String, maximumDistance: Int)
            (graph: TrainGraph): Option[Int] = {
