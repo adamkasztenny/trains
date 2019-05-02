@@ -1,6 +1,7 @@
 package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
+import RichOption._
 
 object NumberOfTripsByStops {
 
@@ -27,7 +28,7 @@ object NumberOfTripsByStops {
 
     def calculateNumberOfPaths(start: graph.NodeT, end: graph.NodeT): Option[Int] = {
       val pathsFulfillingPredicate = traverse(start, end)()
-      Option(pathsFulfillingPredicate.length).filterNot(_ == 0)
+      Option(pathsFulfillingPredicate.length).nonZero
     }
 
     (graph.find(startCity), graph.find(endCity)) match {
