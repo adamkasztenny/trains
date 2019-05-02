@@ -29,15 +29,31 @@ class TrainCalculationApiIntegrationTest extends FunSuite with Matchers {
     }
   }
 
-  test("returns the number of trips between two cities on a graph if there is a path between them") {
+  test("returns the number of trips between two cities on a graph, based on number of stops, if there is a path " +
+    "between them") {
     new ConnectedCities {
       api.numberOfTripsBetweenCitiesByStops("A", "C", _ >= 1, 1) shouldBe "1"
     }
   }
 
-  test("returns a no route message for the number of trips between cities if the two cities are not connected") {
+  test("returns a no route message for the number of trips between cities, based on number of stops, if the two " +
+    "cities are not connected") {
     new DisconnectedCities {
       api.numberOfTripsBetweenCitiesByStops("A", "D", _ >= 1, 2) shouldBe api.NoRouteMessage
+    }
+  }
+
+  test("returns the number of trips between two cities on a graph, based on distance, if there is a path between " +
+    "them") {
+    new ConnectedCities {
+      api.numberOfTripsBetweenCitiesByDistance("A", "C", 10) shouldBe "2"
+    }
+  }
+
+  test("returns a no route message for the number of trips between cities, based on distance, if the two cities are " +
+    "not connected") {
+    new DisconnectedCities {
+      api.numberOfTripsBetweenCitiesByDistance("A", "D", 2) shouldBe api.NoRouteMessage
     }
   }
 
