@@ -1,4 +1,4 @@
-package org.adamkasztenny.trains
+package org.adamkasztenny.trains.api
 
 import org.scalatest.{FunSuite, Matchers}
 

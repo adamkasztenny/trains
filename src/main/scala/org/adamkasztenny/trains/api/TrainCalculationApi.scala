@@ -1,4 +1,4 @@
-package org.adamkasztenny.trains
+package org.adamkasztenny.trains.api
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 import org.adamkasztenny.trains.graph.calculation.{Distance, NumberOfTripsByDistance, NumberOfTripsByStops, ShortestPath}
