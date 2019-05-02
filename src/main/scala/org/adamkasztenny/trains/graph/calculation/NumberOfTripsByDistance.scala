@@ -42,8 +42,8 @@ object NumberOfTripsByDistance {
       val distinctPaths = allPaths.distinct
       val nonEmptyPaths = distinctPaths.filterNot(_.distance == 0)
       val validPaths = nonEmptyPaths.filter(_.nodes.last == end)
-      val pathsFulfillingPredicate = validPaths.filter(_.distance < maximumDistance)
-      Option(pathsFulfillingPredicate.length).nonZero
+      val pathsWithinDistance = validPaths.filter(_.distance < maximumDistance)
+      Option(pathsWithinDistance.length).nonZero
     }
 
     (graph.find(startCity), graph.find(endCity)) match {
