@@ -1,9 +1,9 @@
-package org.adamkasztenny.trains
+package org.adamkasztenny.trains.graph.calculation
 
+import org.adamkasztenny.trains.graph.calculation.DoubleConversions._
 import org.scalatest.{FunSuite, Matchers}
-import Conversions._
 
-class ConversionsUnitTest extends FunSuite with Matchers {
+class DoubleConversionsUnitTest extends FunSuite with Matchers {
 
   test("should convert a Double to an Int") {
     doubleToInt(0.0) shouldBe 0

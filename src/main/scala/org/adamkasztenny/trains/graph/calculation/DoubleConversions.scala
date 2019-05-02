@@ -1,8 +1,8 @@
-package org.adamkasztenny.trains
+package org.adamkasztenny.trains.graph.calculation
 
 import scala.languageFeature.implicitConversions
 
-object Conversions {
+object DoubleConversions {
   implicit def doubleToInt(double: Double): Int = double.toInt
   implicit def optionDoubleToInt(double: Option[Double]): Option[Int] = double.map(_.toInt)
 }
