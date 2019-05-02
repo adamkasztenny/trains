@@ -4,7 +4,7 @@ import org.adamkasztenny.trains.Conversions
 import org.adamkasztenny.trains.graph.TrainGraphTypes._
 import Conversions._
 
-object ShortestPathCalculator {
+object ShortestPath {
 
   def apply(startCity: String, endCity: String)(graph: TrainGraph): Option[Int] = {
 

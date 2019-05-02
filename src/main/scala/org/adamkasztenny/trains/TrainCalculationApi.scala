@@ -1,7 +1,7 @@
 package org.adamkasztenny.trains
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
-import org.adamkasztenny.trains.graph.calculation.{Distance, NumberOfTripsByDistance, NumberOfTripsByStops, ShortestPathCalculator}
+import org.adamkasztenny.trains.graph.calculation.{Distance, NumberOfTripsByDistance, NumberOfTripsByStops, ShortestPath}
 
 class TrainCalculationApi(graph: TrainGraph) {
 
@@ -27,7 +27,7 @@ class TrainCalculationApi(graph: TrainGraph) {
     }
 
   def shortestPathBetweenCities(startCity: String, endCity: String): String =
-    ShortestPathCalculator(startCity, endCity)(graph) match {
+    ShortestPath(startCity, endCity)(graph) match {
       case Some(distance) => distance.toString
       case _ => NoRouteMessage
     }
