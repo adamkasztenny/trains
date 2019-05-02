@@ -2,7 +2,7 @@ package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 
-object NumberOfTripsCalculator {
+object NumberOfTripsByStopsCalculator {
 
   def apply(startCity: String, endCity: String, compareTo: (Int) => Boolean, maximumNumberOfStops: Int)
            (graph: TrainGraph): Option[Int] = {
