@@ -4,7 +4,7 @@ import org.adamkasztenny.trains.Conversions
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 import Conversions._
 
-object DistanceCalculator {
+object Distance {
 
   def apply(cities: String*)(graph: TrainGraph): Option[Int] = {
     def traverseGraph(nodes: Seq[graph.NodeT]): graph.Path = {

@@ -1,14 +1,14 @@
 package org.adamkasztenny.trains
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
-import org.adamkasztenny.trains.graph.calculation.{DistanceCalculator, NumberOfTripsByDistanceCalculator, NumberOfTripsByStopsCalculator, ShortestPathCalculator}
+import org.adamkasztenny.trains.graph.calculation.{Distance, NumberOfTripsByDistanceCalculator, NumberOfTripsByStopsCalculator, ShortestPathCalculator}
 
 class TrainCalculationApi(graph: TrainGraph) {
 
   val NoRouteMessage: String = "NO SUCH ROUTE"
 
   def distanceBetweenCities(cities: String*): String =
-    DistanceCalculator(cities: _*)(graph) match {
+    Distance(cities: _*)(graph) match {
       case Some(distance) => distance.toString
       case _ => NoRouteMessage
     }
