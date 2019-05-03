@@ -34,6 +34,14 @@ class NumberOfTripsByDistanceUnitTest extends FunSuite with Matchers with Option
     NumberOfTripsByDistance("A", "B", 0)(graph).value shouldBe 0
   }
 
+  test("should return the number of possible trips between two cities in a graph with several nodes that have a " +
+    "distance less than the one provided") {
+    val graph = Graph(WkDiEdge("A", "B")(4),  WkDiEdge("B", "C")(4), WkDiEdge("C", "D")(1), WkDiEdge("A", "D")(3))
+    NumberOfTripsByDistance("A", "D", 5)(graph).value shouldBe 1
+    NumberOfTripsByDistance("A", "D", 1)(graph).value shouldBe 0
+    NumberOfTripsByDistance("A", "D", 10)(graph).value shouldBe 2
+  }
+
   test("should return the number of possible trips between two cities in a graph with many nodes that have a " +
     "distance less than the one provided") {
     val graph = SampleGraph()
