@@ -11,7 +11,7 @@ object TrainGraphBuilder {
     val edges = textEdges.map(textEdge => {
       val startNode = textEdge.head.toString
       val endNode = textEdge.charAt(1).toString
-      val weight = textEdge.last.toString.toDouble
+      val weight = textEdge.substring(2, textEdge.length).toDouble
       WkDiEdge(startNode, endNode)(weight)
     })
     Graph(edges: _*)

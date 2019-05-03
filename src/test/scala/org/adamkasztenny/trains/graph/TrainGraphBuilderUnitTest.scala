@@ -32,4 +32,11 @@ class TrainGraphBuilderUnitTest extends FunSuite with Matchers with OptionValues
     trainGraph shouldBe expectedGraph
     trainGraph.totalWeight shouldBe 48
   }
+
+  test("should create a graph with multi-digit distances") {
+    val textEdges = Array("AB300", "BC10")
+    val expectedGraph = Graph(WkDiEdge("A", "B")(300), WkDiEdge("B", "C")(10))
+    val trainGraph = TrainGraphBuilder(textEdges)
+    trainGraph shouldBe expectedGraph
+  }
 }
