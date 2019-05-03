@@ -1,7 +1,7 @@
-package org.adamkasztenny.trains.graph.calculation
+package org.adamkasztenny.trains.graph.calculation.conversions
 
+import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
 import org.scalatest.{FunSuite, Matchers, OptionValues}
-import RichOption._
 
 class RichOptionUnitTest extends FunSuite with Matchers with OptionValues {
 

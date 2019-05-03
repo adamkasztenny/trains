@@ -1,8 +1,8 @@
 package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
-import DoubleConversions._
-import RichOption._
+import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
+import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
 
 object NumberOfTripsByDistance {
 

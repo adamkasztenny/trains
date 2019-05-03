@@ -1,7 +1,7 @@
 package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes._
-import DoubleConversions._
+import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
 
 object ShortestPath {
 

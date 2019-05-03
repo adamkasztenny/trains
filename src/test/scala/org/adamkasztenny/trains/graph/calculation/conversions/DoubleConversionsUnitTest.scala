@@ -1,6 +1,6 @@
-package org.adamkasztenny.trains.graph.calculation
+package org.adamkasztenny.trains.graph.calculation.conversions
 
-import org.adamkasztenny.trains.graph.calculation.DoubleConversions._
+import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
 import org.scalatest.{FunSuite, Matchers}
 
 class DoubleConversionsUnitTest extends FunSuite with Matchers {

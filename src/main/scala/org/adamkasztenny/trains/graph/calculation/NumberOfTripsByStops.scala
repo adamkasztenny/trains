@@ -1,7 +1,7 @@
 package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
-import RichOption._
+import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
 
 object NumberOfTripsByStops {
 

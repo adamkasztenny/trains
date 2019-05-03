@@ -1,4 +1,4 @@
-package org.adamkasztenny.trains.graph.calculation
+package org.adamkasztenny.trains.graph.calculation.conversions
 
 import scala.languageFeature.implicitConversions
 
