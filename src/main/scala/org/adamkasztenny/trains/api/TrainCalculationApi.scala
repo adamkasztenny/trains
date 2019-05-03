@@ -7,29 +7,17 @@ class TrainCalculationApi(graph: TrainGraph) {
 
   val NoRouteMessage: String = "NO SUCH ROUTE"
 
-  def distanceBetweenCities(cities: String*): String =
-    Distance(cities: _*)(graph) match {
-      case Some(distance) => distance.toString
-      case _ => NoRouteMessage
-    }
+  def distanceBetweenCities(cities: String*): String = resultOrNoRoute(Distance(cities: _*)(graph))
 
   def numberOfTripsBetweenCitiesByStops(startCity: String, endCity: String, compareTo: (Int) => Boolean,
                                         maximumNumberOfStops: Int): String =
-    NumberOfTripsByStops(startCity, endCity, compareTo, maximumNumberOfStops)(graph) match {
-      case Some(numberOfTrips) => numberOfTrips.toString
-      case _ => NoRouteMessage
-    }
+    resultOrNoRoute(NumberOfTripsByStops(startCity, endCity, compareTo, maximumNumberOfStops)(graph))
 
   def numberOfTripsBetweenCitiesByDistance(startCity: String, endCity: String, maximumNumberOfStops: Int): String =
-    NumberOfTripsByDistance(startCity, endCity, maximumNumberOfStops)(graph) match {
-      case Some(numberOfTrips) => numberOfTrips.toString
-      case _ => NoRouteMessage
-    }
+    resultOrNoRoute(NumberOfTripsByDistance(startCity, endCity, maximumNumberOfStops)(graph))
 
   def shortestPathBetweenCities(startCity: String, endCity: String): String =
-    ShortestPath(startCity, endCity)(graph) match {
-      case Some(distance) => distance.toString
-      case _ => NoRouteMessage
-    }
+    resultOrNoRoute(ShortestPath(startCity, endCity)(graph))
 
+  private def resultOrNoRoute(result: Option[Int]): String = result.map(_.toString).getOrElse(NoRouteMessage)
 }

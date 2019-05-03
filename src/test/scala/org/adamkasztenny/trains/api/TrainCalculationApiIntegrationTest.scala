@@ -64,7 +64,7 @@ class TrainCalculationApiIntegrationTest extends FunSuite with Matchers {
     }
   }
 
-  test("returns no route message for the number of trips between cities, based on distance, if the two cities are " +
+  test("returns no route message for the number of trips between cities, based on distance, if the two cities " +
     "do not exist") {
     new DisconnectedCities {
       api.numberOfTripsBetweenCitiesByDistance("X", "Y", 2) shouldBe api.NoRouteMessage
