@@ -16,4 +16,4 @@ and to run tests:
 ```
 ./test.sh
 ```
-which generates a coverage report with [Scoverage](https://github.com/scoverage/sbt-scoverage)
+which generates a coverage report with [Scoverage](https://github.com/scoverage/sbt-scoverage).
