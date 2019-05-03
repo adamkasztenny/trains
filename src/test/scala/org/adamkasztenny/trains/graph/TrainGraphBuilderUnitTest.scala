@@ -2,10 +2,13 @@ package org.adamkasztenny.trains.graph
 
 import org.scalatest.{FunSuite, Matchers, OptionValues}
 
+import scala.util.Random
 import scalax.collection.edge.WkDiEdge
 import scalax.collection.immutable.Graph
 
 class TrainGraphBuilderUnitTest extends FunSuite with Matchers with OptionValues {
+
+  private val sampleGraphTextEdges = Array("AB5", "BC4", "CD8", "DC8", "DE6", "AD5", "CE2", "EB3", "AE7")
 
   test("should create an empty graph if there is no text representation of the edges") {
     val trainGraph = TrainGraphBuilder(Array.empty)
@@ -26,9 +29,8 @@ class TrainGraphBuilderUnitTest extends FunSuite with Matchers with OptionValues
   }
 
   test("should create a graph with many nodes from the simple text representation of edges") {
-    val textEdges = Array("AB5", "BC4", "CD8", "DC8", "DE6", "AD5", "CE2", "EB3", "AE7")
     val expectedGraph = SampleGraph()
-    val trainGraph = TrainGraphBuilder(textEdges)
+    val trainGraph = TrainGraphBuilder(sampleGraphTextEdges)
     trainGraph shouldBe expectedGraph
     trainGraph.totalWeight shouldBe 48
   }
@@ -38,5 +40,10 @@ class TrainGraphBuilderUnitTest extends FunSuite with Matchers with OptionValues
     val expectedGraph = Graph(WkDiEdge("A", "B")(300), WkDiEdge("B", "C")(10))
     val trainGraph = TrainGraphBuilder(textEdges)
     trainGraph shouldBe expectedGraph
+  }
+
+  test("should produce the same graph regardless of order of the inputs") {
+    TrainGraphBuilder(sampleGraphTextEdges) shouldBe
+      TrainGraphBuilder(Random.shuffle(sampleGraphTextEdges.toSeq).toArray)
   }
 }
