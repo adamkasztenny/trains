@@ -1,14 +1,14 @@
 package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
-import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
 import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
+import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
 
 object NumberOfTripsByDistance {
 
   def apply(startCity: String, endCity: String, maximumDistance: Int)
            (graph: TrainGraph): Option[Int] = {
-    case class Path (nodes: Seq[graph.NodeT], distance: Int)
+    case class Path(nodes: Seq[graph.NodeT], distance: Int)
     type Paths = Seq[Path]
 
     def updatePathWithDistance(start: graph.NodeT, currentPath: Path): Path = {

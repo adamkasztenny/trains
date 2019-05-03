@@ -1,8 +1,8 @@
 package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
-import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
 import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
+import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
 
 object Distance {
 

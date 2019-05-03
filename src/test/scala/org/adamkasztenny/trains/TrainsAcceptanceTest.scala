@@ -8,11 +8,12 @@ import org.scalatest.{BeforeAndAfterEach, FunSuite, Matchers}
   * This is a high-level acceptance test that checks if the entire program works as expected.
   * All the computations passed to the println statements in Trains are tested in the unit tests for the
   * respective calculations.
-  **
-  *Thanks to https://www.scala-lang.org/api/current/scala/Console$.html for showing me the neat Console.withOut function.
-  **
-  *This test is excluded from coverage, thanks to https://github.com/scoverage/sbt-scoverage/issues/225.
-**/
+  *
+  * Thanks to https://www.scala-lang.org/api/current/scala/Console$.html for showing me the neat Console.withOut
+  * function.
+  *
+  * This test is excluded from coverage, thanks to https://github.com/scoverage/sbt-scoverage/issues/225.
+  **/
 
 class TrainsAcceptanceTest extends FunSuite with Matchers with BeforeAndAfterEach {
 
