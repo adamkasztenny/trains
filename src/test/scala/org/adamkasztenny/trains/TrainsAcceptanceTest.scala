@@ -56,4 +56,24 @@ class TrainsAcceptanceTest extends FunSuite with Matchers with BeforeAndAfterEac
         |Output #9: NO SUCH ROUTE
         |Output #10: NO SUCH ROUTE""".stripMargin
   }
+
+  test("should work with larger distances") {
+    val output = new ByteArrayOutputStream
+
+    Console.withOut(output) {
+      Trains.main(Array("AB50", "BC40", "CD80", "DC80", "DE60", "AD50", "CE20", "EB30", "AE70"))
+    }
+
+    output.toString.trim shouldBe
+      """|Output #1: 90
+        |Output #2: 50
+        |Output #3: 130
+        |Output #4: 220
+        |Output #5: NO SUCH ROUTE
+        |Output #6: 2
+        |Output #7: 3
+        |Output #8: 90
+        |Output #9: 90
+        |Output #10: 0""".stripMargin
+  }
 }
