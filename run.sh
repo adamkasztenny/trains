@@ -1,3 +1,6 @@
 #!/bin/bash
 
-sbt clean update compile "run $@"
+GRAPH="$@"
+echo "Running with graph $GRAPH"
+
+sbt clean update compile "run $GRAPH"
