@@ -36,10 +36,17 @@ class TrainCalculationApiIntegrationTest extends FunSuite with Matchers {
     }
   }
 
-  test("returns a no route message for the number of trips between cities, based on number of stops, if the two " +
+  test("returns 0 for the number of trips between cities, based on number of stops, if the two " +
     "cities are not connected") {
     new DisconnectedCities {
-      api.numberOfTripsBetweenCitiesByStops("A", "D", _ >= 1, 2) shouldBe api.NoRouteMessage
+      api.numberOfTripsBetweenCitiesByStops("A", "D", _ >= 1, 2) shouldBe  "0"
+    }
+  }
+
+  test("returns no route message for the number of trips between cities, based on number of stops, if the two " +
+    "cities do not exist") {
+    new DisconnectedCities {
+      api.numberOfTripsBetweenCitiesByStops("X", "Y", _ >= 1, 2) shouldBe api.NoRouteMessage
     }
   }
 
@@ -50,10 +57,17 @@ class TrainCalculationApiIntegrationTest extends FunSuite with Matchers {
     }
   }
 
-  test("returns a no route message for the number of trips between cities, based on distance, if the two cities are " +
+  test("returns 0 for the number of trips between cities, based on distance, if the two cities are " +
     "not connected") {
     new DisconnectedCities {
-      api.numberOfTripsBetweenCitiesByDistance("A", "D", 2) shouldBe api.NoRouteMessage
+      api.numberOfTripsBetweenCitiesByDistance("A", "D", 2) shouldBe "0"
+    }
+  }
+
+  test("returns no route message for the number of trips between cities, based on distance, if the two cities are " +
+    "do not exist") {
+    new DisconnectedCities {
+      api.numberOfTripsBetweenCitiesByDistance("X", "Y", 2) shouldBe api.NoRouteMessage
     }
   }
 

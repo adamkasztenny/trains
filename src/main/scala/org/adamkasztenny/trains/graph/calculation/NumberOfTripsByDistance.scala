@@ -2,7 +2,6 @@ package org.adamkasztenny.trains.graph.calculation
 
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
-import org.adamkasztenny.trains.graph.calculation.conversions.RichOption._
 
 object NumberOfTripsByDistance {
 
@@ -43,7 +42,7 @@ object NumberOfTripsByDistance {
       val nonEmptyPaths = distinctPaths.filterNot(_.distance == 0)
       val validPaths = nonEmptyPaths.filter(_.nodes.last == end)
       val pathsWithinDistance = validPaths.filter(_.distance < maximumDistance)
-      Option(pathsWithinDistance.length).nonZero
+      Option(pathsWithinDistance.length)
     }
 
     (graph.find(startCity), graph.find(endCity)) match {

@@ -20,9 +20,9 @@ class NumberOfTripsByDistanceUnitTest extends FunSuite with Matchers with Option
     NumberOfTripsByDistance("B", "A", maximumDistance)(graph) shouldBe None
   }
 
-  test("should return None if there is no route between two cities") {
+  test("should return 0 if there is no route between two cities") {
     val graph = Graph(WkDiEdge("A", "B")(2), WkDiEdge("C", "E")(2))
-    NumberOfTripsByDistance("A", "C", maximumDistance)(graph) shouldBe None
+    NumberOfTripsByDistance("A", "C", maximumDistance)(graph).value shouldBe 0
   }
 
   test("should return the number of possible trips between two cities in a two node graph that have a distance less " +
@@ -30,8 +30,8 @@ class NumberOfTripsByDistanceUnitTest extends FunSuite with Matchers with Option
     val graph = Graph(WkDiEdge("A", "B")(2))
     NumberOfTripsByDistance("A", "B", 4)(graph).value shouldBe 1
     NumberOfTripsByDistance("A", "B", 3)(graph).value shouldBe 1
-    NumberOfTripsByDistance("A", "B", 1)(graph) shouldBe None
-    NumberOfTripsByDistance("A", "B", 0)(graph) shouldBe None
+    NumberOfTripsByDistance("A", "B", 1)(graph).value shouldBe 0
+    NumberOfTripsByDistance("A", "B", 0)(graph).value shouldBe 0
   }
 
   test("should return the number of possible trips between two cities in a graph with many nodes that have a " +
