@@ -37,6 +37,26 @@ class TrainsAcceptanceTest extends FunSuite with Matchers with BeforeAndAfterEac
         |Output #10: 7""".stripMargin
   }
 
+  test("should output the calculation results as per a graph different than the sample") {
+    val output = new ByteArrayOutputStream
+
+    Console.withOut(output) {
+      Trains.main(Array("AB2", "BC6", "CB7", "BD6", "DC7", "DE5", "ED4", "AE3", "EA1"))
+    }
+
+    output.toString.trim shouldBe
+      """|Output #1: 8
+        |Output #2: NO SUCH ROUTE
+        |Output #3: NO SUCH ROUTE
+        |Output #4: NO SUCH ROUTE
+        |Output #5: 7
+        |Output #6: 2
+        |Output #7: 2
+        |Output #8: 8
+        |Output #9: 13
+        |Output #10: 5""".stripMargin
+  }
+
   test("should work with an empty graph") {
     val output = new ByteArrayOutputStream
 
