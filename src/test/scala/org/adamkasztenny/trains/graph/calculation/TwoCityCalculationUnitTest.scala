@@ -17,7 +17,9 @@ class TwoCityCalculationUnitTest extends FunSuite with Matchers with OptionValue
   test("should run the calculation function if the two cities both exist") {
     new Fixture {
       calculateIfCitiesExist("A", "B")(graph)(calculation).value shouldBe 2
+      calculateIfCitiesExist("B", "A")(graph)(calculation).value shouldBe 2
       calculateIfCitiesExist("A", "A")(graph)(calculation).value shouldBe 2
+      calculateIfCitiesExist("B", "B")(graph)(calculation).value shouldBe 2
     }
   }
 
