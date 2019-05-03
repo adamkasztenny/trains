@@ -19,8 +19,9 @@ class ShortestPathUnitTest extends FunSuite with Matchers with OptionValues {
   }
 
   test("should return None if there is no route between two cities") {
-    val graph = Graph(WkDiEdge("A", "B")(2), WkDiEdge("C", "E")(2))
+    val graph = Graph(WkDiEdge("A", "B")(2), WkDiEdge("C", "E")(2), WkDiEdge("B", "D")(5))
     ShortestPath("A", "C")(graph) shouldBe None
+    ShortestPath("B", "B")(graph) shouldBe None
   }
 
   test("should return the shortest path between two cities in a two node graph") {
