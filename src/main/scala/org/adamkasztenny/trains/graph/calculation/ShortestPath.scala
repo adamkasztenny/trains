@@ -3,7 +3,7 @@ package org.adamkasztenny.trains.graph.calculation
 import org.adamkasztenny.trains.graph.TrainGraphTypes._
 import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
 
-object ShortestPath {
+object ShortestPath extends TwoCityCalculation {
 
   def apply(startCity: String, endCity: String)(graph: TrainGraph): Option[Int] = {
 
@@ -22,9 +22,6 @@ object ShortestPath {
       else (start shortestPathTo end).map(_.weight)
     }
 
-    (graph.find(startCity), graph.find(endCity)) match {
-      case (Some(start), Some(end)) => calculateShortestPath(start, end)
-      case _ => None
-    }
+    calculateIfCitiesExist(startCity, endCity)(graph)(calculateShortestPath)
   }
 }

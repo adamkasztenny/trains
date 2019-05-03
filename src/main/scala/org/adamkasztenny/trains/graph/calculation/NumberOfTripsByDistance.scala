@@ -3,7 +3,7 @@ package org.adamkasztenny.trains.graph.calculation
 import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 import org.adamkasztenny.trains.graph.calculation.conversions.DoubleConversions._
 
-object NumberOfTripsByDistance {
+object NumberOfTripsByDistance extends TwoCityCalculation {
 
   def apply(startCity: String, endCity: String, maximumDistance: Int)
            (graph: TrainGraph): Option[Int] = {
@@ -45,9 +45,6 @@ object NumberOfTripsByDistance {
       Option(pathsWithinDistance.length)
     }
 
-    (graph.find(startCity), graph.find(endCity)) match {
-      case (Some(start), Some(end)) => calculateNumberOfPaths(start, end)
-      case _ => None
-    }
+     calculateIfCitiesExist(startCity, endCity)(graph)(calculateNumberOfPaths)
   }
 }
