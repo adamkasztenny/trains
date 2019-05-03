@@ -76,4 +76,24 @@ class TrainsAcceptanceTest extends FunSuite with Matchers with BeforeAndAfterEac
         |Output #9: 90
         |Output #10: 0""".stripMargin
   }
+
+  test("should work with a disjoint graph") {
+    val output = new ByteArrayOutputStream
+
+    Console.withOut(output) {
+      Trains.main(Array("AC6", "BD2", "DE8", "DB7"))
+    }
+
+    output.toString.trim shouldBe
+      """|Output #1: NO SUCH ROUTE
+        |Output #2: NO SUCH ROUTE
+        |Output #3: NO SUCH ROUTE
+        |Output #4: NO SUCH ROUTE
+        |Output #5: NO SUCH ROUTE
+        |Output #6: 0
+        |Output #7: 0
+        |Output #8: 6
+        |Output #9: 9
+        |Output #10: 0""".stripMargin
+  }
 }

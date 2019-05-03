@@ -46,4 +46,11 @@ class TrainGraphBuilderUnitTest extends FunSuite with Matchers with OptionValues
     TrainGraphBuilder(sampleGraphTextEdges) shouldBe
       TrainGraphBuilder(Random.shuffle(sampleGraphTextEdges.toSeq).toArray)
   }
+
+  test("should produce a disjoint graph") {
+    val textEdges = Array("AC6", "BD2", "DE8", "DB7")
+    val expectedGraph = Graph(WkDiEdge("A", "C")(6), WkDiEdge("B", "D")(2), WkDiEdge("D", "B")(7),
+      WkDiEdge("D", "E")(8))
+    TrainGraphBuilder(textEdges) shouldBe expectedGraph
+  }
 }
