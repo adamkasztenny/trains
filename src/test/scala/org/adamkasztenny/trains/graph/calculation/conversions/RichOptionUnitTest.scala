@@ -14,4 +14,8 @@ class RichOptionUnitTest extends FunSuite with Matchers with OptionValues {
     Option(3).nonZero.value shouldBe 3
     Some(5).nonZero.value shouldBe 5
   }
+
+  test("should preserve None") {
+    None.nonZero shouldBe None
+  }
 }
