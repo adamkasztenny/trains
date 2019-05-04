@@ -11,11 +11,11 @@ class DoubleConversionsUnitTest extends FunSuite with Matchers {
   }
 
   test("should convert an Option of a Double to an Option of an Int, if one is defined") {
-    optionDoubleToInt(Option(0.0)) shouldBe Option(0)
-    optionDoubleToInt(Option(3.0)) shouldBe Option(3)
+    optionOfDoubleToOptionOfInt(Option(0.0)) shouldBe Option(0)
+    optionOfDoubleToOptionOfInt(Option(3.0)) shouldBe Option(3)
   }
 
   test("should preserve None if the Double is None") {
-    optionDoubleToInt(None) shouldBe None
+    optionOfDoubleToOptionOfInt(None) shouldBe None
   }
 }
