@@ -9,7 +9,7 @@ object NumberOfTripsByStops extends TwoCityCalculation {
     type Path = Seq[graph.NodeT]
     type Paths = Seq[Path]
 
-    def traverse(start: graph.NodeT, end: graph.NodeT)
+    def traverseUntilMaximumNumberOfStops(start: graph.NodeT, end: graph.NodeT)
                 (currentPath: Path = Seq.empty, allPaths: Paths = Seq.empty): Paths = {
       val newPath = currentPath :+ start
 
@@ -21,12 +21,12 @@ object NumberOfTripsByStops extends TwoCityCalculation {
 
       else {
         val successors = start.diSuccessors.toSeq
-        successors.flatMap(successor => traverse(successor, end)(newPath))
+        successors.flatMap(successor => traverseUntilMaximumNumberOfStops(successor, end)(newPath))
       }
     }
 
     def calculateNumberOfPaths(start: graph.NodeT, end: graph.NodeT): Option[Int] = {
-      val pathsFulfillingPredicate = traverse(start, end)()
+      val pathsFulfillingPredicate = traverseUntilMaximumNumberOfStops(start, end)()
       Option(pathsFulfillingPredicate.length)
     }
 
