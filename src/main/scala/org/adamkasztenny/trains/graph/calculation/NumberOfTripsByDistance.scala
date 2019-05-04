@@ -24,8 +24,8 @@ object NumberOfTripsByDistance extends TwoCityCalculation {
       else paths
     }
 
-    def traverseUntilMaximumDistance(start: graph.NodeT, end: graph.NodeT)
-                (currentPath: Path = Path(Seq.empty, 0), allPaths: Paths = Seq.empty): Paths = {
+    def traverseUntilMaximumDistance(start: graph.NodeT)
+                                    (currentPath: Path = Path(Seq.empty, 0), allPaths: Paths = Seq.empty): Paths = {
       val newPath = updatePathWithDistance(start, currentPath)
       if (newPath.distance > maximumDistance) return allPaths
 
@@ -33,11 +33,11 @@ object NumberOfTripsByDistance extends TwoCityCalculation {
 
       val successors = start.diSuccessors.toSeq
       if (successors.isEmpty) accumulatedPaths
-      else successors.flatMap(successor => traverseUntilMaximumDistance(successor, end)(newPath, accumulatedPaths))
+      else successors.flatMap(successor => traverseUntilMaximumDistance(successor)(newPath, accumulatedPaths))
     }
 
     def calculateNumberOfPaths(start: graph.NodeT, end: graph.NodeT): Option[Int] = {
-      val allPaths = traverseUntilMaximumDistance(start, end)()
+      val allPaths = traverseUntilMaximumDistance(start)()
       val distinctPaths = allPaths.distinct
       val nonEmptyPaths = distinctPaths.filterNot(_.distance == 0)
       val validPaths = nonEmptyPaths.filter(_.nodes.last == end)
