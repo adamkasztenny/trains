@@ -4,7 +4,7 @@ import org.adamkasztenny.trains.graph.TrainGraphTypes.TrainGraph
 
 object NumberOfTripsByStops extends TwoCityCalculation {
 
-  def apply(startCity: String, endCity: String, compareTo: (Int) => Boolean, maximumNumberOfStops: Int)
+  def apply(startCity: String, endCity: String, predicate: (Int) => Boolean, maximumNumberOfStops: Int)
            (graph: TrainGraph): Option[Int] = {
     type Path = Seq[graph.NodeT]
     type Paths = Seq[Path]
@@ -16,7 +16,7 @@ object NumberOfTripsByStops extends TwoCityCalculation {
       if (newPath.length > maximumNumberOfStops + 1) return allPaths
 
       val pathIsValid = newPath.last == end
-      val pathFulfillsPredicate = newPath.length > 1 && compareTo(newPath.length - 1)
+      val pathFulfillsPredicate = newPath.length > 1 && predicate(newPath.length - 1)
       if (pathIsValid && pathFulfillsPredicate) allPaths :+ newPath
 
       else {
