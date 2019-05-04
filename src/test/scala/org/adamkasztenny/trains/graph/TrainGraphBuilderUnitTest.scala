@@ -40,6 +40,7 @@ class TrainGraphBuilderUnitTest extends FunSuite with Matchers with OptionValues
     val expectedGraph = Graph(WkDiEdge("A", "B")(300), WkDiEdge("B", "C")(10))
     val trainGraph = TrainGraphBuilder(textEdges)
     trainGraph shouldBe expectedGraph
+    trainGraph.totalWeight shouldBe 310
   }
 
   test("should produce the same graph regardless of order of the inputs") {
@@ -51,6 +52,8 @@ class TrainGraphBuilderUnitTest extends FunSuite with Matchers with OptionValues
     val textEdges = Array("AC6", "BD2", "DE8", "DB7")
     val expectedGraph = Graph(WkDiEdge("A", "C")(6), WkDiEdge("B", "D")(2), WkDiEdge("D", "B")(7),
       WkDiEdge("D", "E")(8))
-    TrainGraphBuilder(textEdges) shouldBe expectedGraph
+    val trainGraph = TrainGraphBuilder(textEdges)
+    trainGraph shouldBe expectedGraph
+    trainGraph.totalWeight shouldBe 23
   }
 }
