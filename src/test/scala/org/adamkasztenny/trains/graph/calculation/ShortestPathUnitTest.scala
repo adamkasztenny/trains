@@ -57,4 +57,36 @@ class ShortestPathUnitTest extends FunSuite with Matchers with OptionValues {
     )
     ShortestPath("A", "A")(graphWithMultipleCycles).value shouldBe 3
   }
+
+  test("should return the shortest path back to the starting node, even when successor has a greater initial " +
+    "distance") {
+    val complexGraph = Graph(
+      WkDiEdge("A", "B")(1),
+      WkDiEdge("B", "C")(8),
+      WkDiEdge("C", "B")(7),
+      WkDiEdge("B", "D")(6),
+      WkDiEdge("D", "C")(7),
+      WkDiEdge("D", "E")(5),
+      WkDiEdge("E", "D")(4),
+      WkDiEdge("A", "E")(3),
+      WkDiEdge("E", "A")(1)
+    )
+    ShortestPath("B", "B")(complexGraph).value shouldBe 13
+  }
+
+  test("should return the shortest path back to the starting node, even when multiple successors have the same " +
+    "distance") {
+    val complexGraph = Graph(
+      WkDiEdge("A", "B")(1),
+      WkDiEdge("B", "C")(6),
+      WkDiEdge("C", "B")(7),
+      WkDiEdge("B", "D")(6),
+      WkDiEdge("D", "C")(7),
+      WkDiEdge("D", "E")(5),
+      WkDiEdge("E", "D")(4),
+      WkDiEdge("A", "E")(3),
+      WkDiEdge("E", "A")(1)
+    )
+    ShortestPath("B", "B")(complexGraph).value shouldBe 13
+  }
 }

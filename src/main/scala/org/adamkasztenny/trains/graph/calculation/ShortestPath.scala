@@ -12,7 +12,10 @@ object ShortestPath extends TwoCityCalculation {
       val pathsBackToStart = successors.map(successor => successor shortestPathTo node).filter(_.isDefined).map(_.get)
       if (pathsBackToStart.isEmpty) None
       else {
-        val shortestPathBackToStart = pathsBackToStart.minBy(_.weight)
+        val shortestPathBackToStart = pathsBackToStart.minBy(path => {
+          val distanceFromStart = (node shortestPathTo path.nodes.head).get.weight
+          distanceFromStart + path.weight
+        })
         (node shortestPathTo shortestPathBackToStart.nodes.head).map(_.weight + shortestPathBackToStart.weight)
       }
     }
