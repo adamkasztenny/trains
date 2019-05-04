@@ -9,9 +9,9 @@ class TrainCalculationApi(graph: TrainGraph) {
 
   def distanceBetweenCities(cities: String*): String = resultOrNoRoute(Distance(cities: _*)(graph))
 
-  def numberOfTripsBetweenCitiesByStops(startCity: String, endCity: String, compareTo: (Int) => Boolean,
+  def numberOfTripsBetweenCitiesByStops(startCity: String, endCity: String, predicate: (Int) => Boolean,
                                         maximumNumberOfStops: Int): String =
-    resultOrNoRoute(NumberOfTripsByStops(startCity, endCity, compareTo, maximumNumberOfStops)(graph))
+    resultOrNoRoute(NumberOfTripsByStops(startCity, endCity, predicate, maximumNumberOfStops)(graph))
 
   def numberOfTripsBetweenCitiesByDistance(startCity: String, endCity: String, maximumNumberOfStops: Int): String =
     resultOrNoRoute(NumberOfTripsByDistance(startCity, endCity, maximumNumberOfStops)(graph))

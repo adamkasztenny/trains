@@ -36,8 +36,8 @@ class TrainCalculationApiIntegrationTest extends FunSuite with Matchers {
     }
   }
 
-  test("returns 0 for the number of trips between cities, based on number of stops, if the two " +
-    "cities are not connected") {
+  test("returns 0 for the number of trips between cities, based on number of stops, if the two cities are not " +
+    "connected") {
     new DisconnectedCities {
       api.numberOfTripsBetweenCitiesByStops("A", "D", _ >= 1, 2) shouldBe  "0"
     }
